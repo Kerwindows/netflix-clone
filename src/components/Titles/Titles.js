@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./Titles.css";
 import Card from "../Card";
 
-function Titles({ title, movies }) {
+function Titles({ title, movies,size,type,onCardClick }) {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [movieList, setMovieList] = useState([]);
+ 
 
   useEffect(() => {
     setMovieList(movies);
@@ -31,7 +32,7 @@ function Titles({ title, movies }) {
     setIsMouseDown(false);
   };
 
-
+ 
 
   return (
     <div className="titles">
@@ -43,7 +44,7 @@ function Titles({ title, movies }) {
         onMouseUp={handleMouseUp}
       >
         {movieList &&
-          movieList.map((movie) => <Card key={movie.id} movie={movie} />)}
+          movieList.map((movie) => <Card key={movie.id} movie={movie}  onCardClick={onCardClick} size={size} type={type}/>)}
       </ul>
       
     </div>

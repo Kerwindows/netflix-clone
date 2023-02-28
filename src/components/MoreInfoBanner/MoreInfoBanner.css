@@ -1,0 +1,130 @@
+.more-info-banner{
+    background-size: cover;
+    background-position: center;
+    padding:0 30px;
+    height: 550px;
+    position: relative;
+    z-index: 1;
+    color:#fff;
+    font-family:'Inter', Arial, sans-serif;
+}
+
+.more-info__banner-contents{
+    position: relative;
+    padding-top: 150px;
+    height: 190px;
+    z-index: 1;    
+}
+
+.more-info__banner-title{
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 0.5rem;
+}
+.more-info__banner-description{
+    font-size: 0.8rem;
+    width: 45rem;
+    line-height: 1.3;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    max-width:360px;
+    height:80px;
+
+}
+.more-info__banner-info{
+    display: flex;
+    margin-top: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.2rem;  
+    margin-right: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+.more-info__banner-rating{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px
+}
+.more-info__banner-movie-details{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.more-info__banner-info-block{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+    
+}
+.more-info__banner-fadeBottom{
+    height: 22.4rem;
+    background-image: linear-gradient(180deg, transparent 0%, rgba(24, 24, 24, 0.61)60%, #0a0a0a 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.more-info__banner-rating-icon{
+    width: 22px;
+    filter: invert(1);
+    margin-top: -7px;
+}
+.more-info__banner-rating-text{
+    font-size: 1rem;
+}
+.more-info__banner-logos{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.more-info__banner-logo{
+    width:150px;
+    filter: grayscale(1) invert(1);
+}
+.more-info__banner-runtime{
+
+}
+.more-info__banner-rating-icon-white{
+  filter: invert(1);
+}
+.more-info__banner-genre-text{
+    color:#fff;
+}
+.more-info__description{
+    position: relative;
+    padding:0 30px;
+    z-index: 1;
+    margin-top: 20px;
+    color:#fff;
+    font-family:'Inter', Arial, sans-serif;
+}
+
+.more-info__title{
+    color:grey;
+    font-family:'Inter', Arial, sans-serif;   
+}
+.more-info__site{
+    font-family:'Inter', Arial, sans-serif;
+    padding-top: 10px;
+}
+.more-info__production{
+    font-family:'Inter', Arial, sans-serif;
+    padding-top: 10px;
+}
+.more-info__languages{
+    font-family:'Inter', Arial, sans-serif;
+    padding-top: 10px;
+}
+.more-info__link{
+    color:#fff;
+    text-decoration: underline;
+    font-family:'Inter', Arial, sans-serif;
+    text-decoration: none;
+}

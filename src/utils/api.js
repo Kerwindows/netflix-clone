@@ -25,9 +25,17 @@ class Api {
       }
     ).then((res) => this._handleResponse(res));
   }
-  fetchTopRated() {
+  fetchTopRatedMovies() {
     return fetch(
       `${this._baseUrl}/movie/top_rated?api_key=${this._api_key}&language=en-US`,
+      {
+        headers: this._headers,
+      }
+    ).then((res) => this._handleResponse(res));
+  }
+  fetchTopRatedTvShows() {
+    return fetch(
+      `${this._baseUrl}/tv/top_rated?api_key=${this._api_key}&language=en-US`,
       {
         headers: this._headers,
       }
@@ -65,6 +73,16 @@ class Api {
       }
     ).then((res) => this._handleResponse(res));
   }
+ 
+  fetchTvShow(mediaType,tvId) {
+    return fetch(
+      `${this._baseUrl}/${mediaType}/${tvId}?api_key=${this._api_key}&language=en-US`,
+      {
+        headers: this._headers,
+      }
+    ).then((res) => this._handleResponse(res));
+  }
+
 }
 const api = new Api({
   baseUrl: "https://api.themoviedb.org/3",

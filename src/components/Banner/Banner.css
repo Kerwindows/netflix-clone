@@ -42,16 +42,19 @@
     transition: all 0.2s ease-in-out;
 }
 .banner__button{
+    display: flex;
     outline: none;
     border: none;
     font-weight: 700;
     cursor: pointer;
-    padding: 0.5rem 2rem;
+    padding: 0.2rem 2rem;
     border-radius: 0.2rem;
-    margin-right:1rem;
+    margin-right: 1rem;
     background-color: rgba(51,51,51,0.5);
     color: #fff;
     cursor: pointer;
+    align-items: center;
+    gap: 10px;
 }
 .banner__button:hover{
     background-color: #e6e6e6;
@@ -66,3 +69,21 @@
     left: 0;
     right: 0;
 }
+.banner__button-icon{
+    width:35px;
+}
+.banner__button-text{
+    padding-left: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.banner__button-white{
+    background-color: #fff;
+    color: #000;
+}
+.banner__button-icon-white{
+  filter: invert(1);
+}
+.banner__button:hover .banner__button-icon-white{
+    filter: none;
+  }

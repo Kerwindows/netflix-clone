@@ -4,7 +4,7 @@ function Footer() {
   return (
     <>
       <footer className="footer">
-        <p className="footer__copyright">© 2022 Around The U.S.</p>
+        <p className="footer__copyright">© 2023 Netflix Preview</p>
       </footer>
     </>
   );
