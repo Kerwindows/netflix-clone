@@ -73,8 +73,8 @@ class Api {
       }
     ).then((res) => this._handleResponse(res));
   }
- 
-  fetchTvShow(mediaType,tvId) {
+
+  fetchTvShow(mediaType, tvId) {
     return fetch(
       `${this._baseUrl}/${mediaType}/${tvId}?api_key=${this._api_key}&language=en-US`,
       {
@@ -82,12 +82,11 @@ class Api {
       }
     ).then((res) => this._handleResponse(res));
   }
-
 }
 const api = new Api({
   baseUrl: "https://api.themoviedb.org/3",
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json;charset=utf-8",
   },
   api_key: "fb3f81d85d2eabbafe617fd79ae67b65",
 });

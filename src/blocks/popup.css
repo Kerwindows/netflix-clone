@@ -38,7 +38,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
-  color:#fff;
+  color: #fff;
 }
 
 .popup_opened {
@@ -166,6 +166,7 @@
   font-size: 12px;
   line-height: 14.52px;
   color: #fff;
+  text-align: center;
 }
 
 .popup__button_disabled {

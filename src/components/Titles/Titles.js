@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Titles.css";
 import Card from "../Card";
 
-function Titles({ title, movies,size,type,onCardClick }) {
+function Titles({ title, movies, size, type, onCardClick }) {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [movieList, setMovieList] = useState([]);
- 
 
   useEffect(() => {
     setMovieList(movies);
@@ -32,11 +31,9 @@ function Titles({ title, movies,size,type,onCardClick }) {
     setIsMouseDown(false);
   };
 
- 
-
   return (
     <div className="titles">
-      <h2>{title}</h2>
+      <h2 className="titles__title">{title}</h2>
       <ul
         className="title__posters"
         onMouseDown={handleMouseDown}
@@ -44,9 +41,16 @@ function Titles({ title, movies,size,type,onCardClick }) {
         onMouseUp={handleMouseUp}
       >
         {movieList &&
-          movieList.map((movie) => <Card key={movie.id} movie={movie}  onCardClick={onCardClick} size={size} type={type}/>)}
+          movieList.map((movie) => (
+            <Card
+              key={movie.id}
+              movie={movie}
+              onCardClick={onCardClick}
+              size={size}
+              type={type}
+            />
+          ))}
       </ul>
-      
     </div>
   );
 }

@@ -1,3 +1,6 @@
+.titles__title {
+  margin: 0;
+}
 .title__posters {
   display: flex;
   gap: 15px;
@@ -6,7 +9,7 @@
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 70px 0 70px 24px;
+  padding: 50px 0 50px 24px;
   list-style-type: none;
   -webkit-overflow-scrolling: touch;
 }

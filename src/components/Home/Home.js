@@ -1,110 +1,251 @@
 import React, { useState, useEffect } from "react";
+import { useCallback } from "react";
+import "../../index.css";
 import api from "../../utils/api";
 import Banner from "../Banner/Banner";
 import Footer from "../Footer";
 import Titles from "../Titles/Titles";
 import Nav from "../Nav/Nav";
-import ImagePopup from "../ImagePopup/ImagePopup";
-import "../../index.css";
-import movieTrailer from 'movie-trailer';
+import VideoPopup from "../VideoPopup/VideoPopup";
+import { ColorRing } from "react-loader-spinner";
+import movieTrailer from "movie-trailer";
 
 function Home() {
   // state variable for user info
   const [selectedCard, setSelectedCard] = useState(null);
-  const [popularPic, setPopularPic] = useState([]);
-  const [netflixMovies, setNetflixMovies] = useState([]);
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  // const [topRatedMovies, setTopRatedMovies] = useState([]);
-  // const [topRatedTvShows, setTopRatedTvShows] = useState([]);
-  const [actionMovies, setActionMovies] = useState([]);
-  const [comedyMovies, setComedyMovies] = useState([]);
-  const [romanticMovies, setRomanticMovies] = useState([]);
-  const [documentaries, setDocumentaries] = useState([]);
-  const [trailerUrl, setTrailerUrl] = useState('');
+  const [popularPics, setPopularPics] = useState({});
+  const [movies, setMovies] = useState({
+    netflix: [],
+    trending: [],
+    action: [],
+    comedy: [],
+    romantic: [],
+    documentaries: [],
+  });
+  const [trailerUrl, setTrailerUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    api.fetchNetflixOriginal().then((data) => {
-      return setPopularPic(
-        data.results[Math.floor(Math.random() * data.results.length - 1)]
-      );
-    });
-    api.fetchNetflixOriginal().then((data) => setNetflixMovies(data.results));
-    api.fetchTrending().then((data) => setTrendingMovies(data.results));
-    // api.fetchTopRatedMovies().then((data) => setTopRatedMovies(data.results));
-    // api.fetchTopRatedTvShows().then((data) => setTopRatedTvShows(data.results));
-    api.fetchActionMovies().then((data) => setActionMovies(data.results));
-    api.fetchComedyMovies().then((data) => setComedyMovies(data.results));
-    api.fetchRomanticMovies().then((data) => setRomanticMovies(data.results));
-    api.fetchDocumentaries().then((data) => setDocumentaries(data.results));
+    const fetchData = () => {
+      setIsLoading(true);
+      api
+        .fetchTrending()
+        .then((data) => {
+          return setPopularPics(
+            data.results[Math.floor(Math.random() * data.results.length - 1)]
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .fetchNetflixOriginal()
+        .then((data) => {
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            netflix: data.results,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .fetchTrending()
+        .then((data) => {
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            trending: data.results,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .fetchActionMovies()
+        .then((data) => {
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            action: data.results,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .fetchComedyMovies()
+        .then((data) => {
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            comedy: data.results,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .fetchRomanticMovies()
+        .then((data) => {
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            romantic: data.results,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .fetchDocumentaries()
+        .then((data) => {
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            documentaries: data.results,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    };
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchNetflixOriginal = () => {
+      api
+        .fetchTrending()
+        .then((data) => {
+          return setPopularPics(
+            data.results[Math.floor(Math.random() * data.results.length - 1)]
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    const netflixInterval = setInterval(fetchNetflixOriginal, 15000);
+
+    return () => clearInterval(netflixInterval);
+  }, []);
+
+  function handleCardClick(clickedCard) {
+    setSelectedCard(clickedCard);
+    getTrailer(clickedCard);
+  }
 
   function closeAllPopups() {
     setSelectedCard(null);
-    getTrailer('')
+    getTrailer("");
   }
-  function handleCardClick(clickedCard) {
-    setSelectedCard(clickedCard);
-    getTrailer(clickedCard)
+  // eslint-disable-next-line
+  const closeAllPopupsCallback = useCallback(closeAllPopups, []);
+  const getTrailerCallback = useCallback(getTrailer, [
+    trailerUrl,
+    setTrailerUrl,
+  ]);
+
+  function getTrailer(mov) {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(mov?.name || "", { tmdbId: mov?.id })
+        .then((url) => {
+          console.log("url", url);
+          if (url) {
+            const urlParams = new URLSearchParams(new URL(url).search);
+            setTrailerUrl(urlParams.get("v"));
+          } else {
+            setTrailerUrl("");
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }
 
   useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === "Escape") {
-        closeAllPopups();
-        
+        closeAllPopupsCallback();
+        getTrailerCallback("");
       }
     };
-
     document.addEventListener("keydown", closeByEscape);
-
     return () => document.removeEventListener("keydown", closeByEscape);
-  }, []);
-  
-  const opts = {
-    height: "390",
-    width: "640",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
-  function  getTrailer(mov){
-  if (trailerUrl) {
-    setTrailerUrl("");
-    console.log(trailerUrl)
-  } else {
-    movieTrailer(mov?.name || "")
-      .then((url) => {
-        console.log(url)
-        if (url) {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get('v'));
-        }else{
-          setTrailerUrl('')
-        }
-      })
-      .catch((error) => console.log(error));
-  }
-};
+  }, [closeAllPopupsCallback, getTrailerCallback]);
 
   return (
     <>
       <Nav />
-      <Banner movie={popularPic} onCardClick={handleCardClick} />
-      <div className="page">
-        <Titles title="NETFLIX ORIGINALS" movies={netflixMovies} size='big' type='tv' onCardClick={handleCardClick}/>
-        <Titles title="Trending Now" movies={trendingMovies} />
-        {/* <Titles title="Top Rated Movies" movies={topRatedMovies} />
-        <Titles title="Top Rated Tv Shows" movies={topRatedTvShows} /> */}
-        <Titles title="Action" movies={actionMovies} />
-        <Titles title="Comedies" movies={comedyMovies} />
-        <Titles title="Romantic Movies" movies={romanticMovies} />
-        <Titles title="Ducumentaries" movies={documentaries} />
-        <Footer />
-        
-      </div>
-      <ImagePopup movie={selectedCard} onClose={closeAllPopups} trailerUrl={trailerUrl} opts={opts} />
+      {isLoading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+            backgroundColor: "#000",
+          }}
+        >
+          <ColorRing
+            visible={true}
+            height="100"
+            width="100"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={["#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff"]}
+          />
+        </div>
+      ) : (
+        <>
+          <Banner movie={popularPics} onCardClick={handleCardClick} />
+          <div className="page">
+            <Titles
+              title="NETFLIX ORIGINALS"
+              movies={movies.netflix}
+              size="big"
+              type="tv"
+              onCardClick={handleCardClick}
+            />
+            <Titles
+              title="Trending Now"
+              movies={movies.trending}
+              onCardClick={handleCardClick}
+            />
+
+            <Titles
+              title="Action"
+              movies={movies.action}
+              onCardClick={handleCardClick}
+            />
+            <Titles
+              title="Comedies"
+              movies={movies.comedy}
+              onCardClick={handleCardClick}
+            />
+            <Titles
+              title="Romantic Movies"
+              movies={movies.romantic}
+              onCardClick={handleCardClick}
+            />
+            <Titles
+              title="Ducumentaries"
+              movies={movies.documentaries}
+              onCardClick={handleCardClick}
+            />
+
+            <Footer />
+          </div>
+        </>
+      )}
+      <VideoPopup
+        movie={selectedCard}
+        onClose={closeAllPopups}
+        trailerUrl={trailerUrl}
+      />
     </>
   );
 }

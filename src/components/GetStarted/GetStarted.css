@@ -1,0 +1,81 @@
+.get-started {
+  background-size: "cover";
+  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/d54727b4-2ad9-4e71-bb48-0899f55f103a/231fe309-d117-409a-afc9-c2249d51a97a/US-en-20230220-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  height: 100vh;
+}
+.get-started__info {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  max-width: 950px;
+  padding: 75px 0;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.get-started__title {
+  max-width: 640px;
+  font-size: 3.125rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+.get-started__subtitle {
+  font-family: "Inter", Arial, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  margin: 1rem auto;
+}
+.get-started__cta {
+  font-family: "Inter", Arial, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+}
+.get-started__fadeBottom {
+  height: 100vh;
+  background-image: linear-gradient(
+    180deg,
+    #0a0a0ad1 0%,
+    rgba(24, 24, 24, 0.61) 60%,
+    #0a0a0a 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.get-started__button {
+  margin: auto;
+  margin-top: 20px;
+  transition: all 0.2s ease-in-out;
+  background-color: #e50914;
+  background-image: linear-gradient(180deg, #e50914, #db0510);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 45%);
+  color: #fff;
+  flex-direction: row;
+  line-height: normal;
+  min-height: 50px;
+  min-width: 74px;
+  padding: 15px 2em;
+  font-weight: 500;
+  font-size: 1.625rem;
+  font-family: "Inter", Arial, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+.get-started__button:hover {
+  background-color: #f40612;
+  background-image: linear-gradient(180deg, #f40612, #db0510);
+  transition: all 0.2s ease-in-out;
+}
+.get-started__link {
+  text-decoration: none;
+}
+.started__title {
+}
