@@ -13,6 +13,7 @@ function MoreInfoBanner({ movie }) {
   useEffect(() => {
     setMovieInfo(movie);
     getTrailer(movie);
+    // eslint-disable-next-line
   }, [movie]);
 
   function convertTimeString(totalMinutes) {
@@ -141,7 +142,7 @@ function MoreInfoBanner({ movie }) {
             />
           )}
           <p className="popup__card-image-preview-name">
-            {!trailerUrl && "Cannot be found"}
+            {!trailerUrl && "Trailer cannot be found"}
           </p>
         </div>
         <div className="more-info__details">
