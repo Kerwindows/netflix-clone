@@ -58,13 +58,7 @@ function Banner({ movie, onCardClick, type = "tv" }) {
 
               <Link
                 className="banner__button-link"
-                to={`${
-                  movie.media_type != null
-                    ? movie.media_type
-                    : type == null
-                    ? "movie"
-                    : type
-                }/${movie.id}`}
+                to={`${movie?.media_type || type || "movie"}/${movie?.id}`}
               >
                 <button className="banner__button">
                   <img

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useCallback } from "react";
 import "../../index.css";
 import api from "../../utils/api";
-import Banner from "../Banner/Banner";
-import Footer from "../Footer";
-import Titles from "../Titles/Titles";
-import Nav from "../Nav/Nav";
-import VideoPopup from "../VideoPopup/VideoPopup";
+import Banner from "../Banners/Banner";
+import Footer from "../Footer/Footer";
+import Trailer from "../Trailers/Trailer";
+import Nav from "../Header/Nav";
+import VideoPopup from "../Popups/VideoPopup";
 import { ColorRing } from "react-loader-spinner";
 import movieTrailer from "movie-trailer";
 
@@ -14,6 +14,7 @@ function Home() {
   // state variable for user info
   const [selectedCard, setSelectedCard] = useState(null);
   const [popularPics, setPopularPics] = useState({});
+  const [popularPics2, setPopularPics2] = useState([]);
   const [movies, setMovies] = useState({
     netflix: [],
     trending: [],
@@ -31,6 +32,7 @@ function Home() {
       api
         .fetchTrending()
         .then((data) => {
+          setPopularPics2(data.results);
           return setPopularPics(
             data.results[Math.floor(Math.random() * data.results.length - 1)]
           );
@@ -43,7 +45,7 @@ function Home() {
         .then((data) => {
           setMovies((prevMovies) => ({
             ...prevMovies,
-            netflix: data.results,
+            netflix: data.results.slice(0, 10),
           }));
         })
         .catch((err) => {
@@ -112,23 +114,14 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchNetflixOriginal = () => {
-      api
-        .fetchTrending()
-        .then((data) => {
-          return setPopularPics(
-            data.results[Math.floor(Math.random() * data.results.length - 1)]
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    const interval = setInterval(() => {
+      const randomPic =
+        popularPics2[Math.floor(Math.random() * popularPics2.length - 1)];
+      setPopularPics(randomPic);
+    }, 15000);
 
-    const netflixInterval = setInterval(fetchNetflixOriginal, 15000);
-
-    return () => clearInterval(netflixInterval);
-  }, []);
+    return () => clearInterval(interval);
+  }, [popularPics2]);
 
   function handleCardClick(clickedCard) {
     setSelectedCard(clickedCard);
@@ -146,24 +139,21 @@ function Home() {
     setTrailerUrl,
   ]);
 
-  function getTrailer(mov) {
+  function getTrailer(movie) {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(mov?.name || "", { tmdbId: mov?.id })
+      movieTrailer(movie?.name || movie?.title || "", { tmdbId: movie?.id })
         .then((url) => {
-          console.log("url", url);
-          if (url) {
-            const urlParams = new URLSearchParams(new URL(url).search);
-            setTrailerUrl(urlParams.get("v"));
-          } else {
-            setTrailerUrl("");
-          }
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error);
+          setTrailerUrl("");
+        });
     }
   }
-
   useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === "Escape") {
@@ -202,36 +192,36 @@ function Home() {
       ) : (
         <>
           <Banner movie={popularPics} onCardClick={handleCardClick} />
-          <div className="page">
-            <Titles
+          <div className="main">
+            <Trailer
               title="NETFLIX ORIGINALS"
               movies={movies.netflix}
               size="big"
               type="tv"
               onCardClick={handleCardClick}
             />
-            <Titles
+            <Trailer
               title="Trending Now"
               movies={movies.trending}
               onCardClick={handleCardClick}
             />
 
-            <Titles
+            <Trailer
               title="Action"
               movies={movies.action}
               onCardClick={handleCardClick}
             />
-            <Titles
+            <Trailer
               title="Comedies"
               movies={movies.comedy}
               onCardClick={handleCardClick}
             />
-            <Titles
+            <Trailer
               title="Romantic Movies"
               movies={movies.romantic}
               onCardClick={handleCardClick}
             />
-            <Titles
+            <Trailer
               title="Ducumentaries"
               movies={movies.documentaries}
               onCardClick={handleCardClick}

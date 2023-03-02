@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Nav from "../Nav/Nav";
+import Nav from "../Header/Nav";
 import { animated, useSpring } from "@react-spring/web";
 import "./GetStarted.css";
 

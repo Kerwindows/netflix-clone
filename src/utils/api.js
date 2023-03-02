@@ -1,8 +1,8 @@
 class Api {
-  constructor({ baseUrl, headers, api_key }) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
-    this._api_key = api_key;
+    this._token = `eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYjNmODFkODVkMmVhYmJhZmU2MTdmZDc5YWU2N2I2NSIsInN1YiI6IjYzZmI2ZTAyNmFhOGUwMDBjNjJjYjRmMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.24kSvTzs3X3JYqb5LhUG_M8wiGILsTWgL_Kn4bxdrfs`;
   }
 
   _handleResponse(res) {
@@ -10,85 +10,81 @@ class Api {
   }
 
   fetchTrending() {
-    return fetch(
-      `${this._baseUrl}/trending/all/week?api_key=${this._api_key}&language=en-US`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/trending/all/week?language=en-US`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchNetflixOriginal() {
-    return fetch(
-      `${this._baseUrl}/discover/tv?api_key=${this._api_key}&with_network=213`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/discover/tv?with_network=213`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchTopRatedMovies() {
-    return fetch(
-      `${this._baseUrl}/movie/top_rated?api_key=${this._api_key}&language=en-US`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/movie/top_rated?language=en-US`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchTopRatedTvShows() {
-    return fetch(
-      `${this._baseUrl}/tv/top_rated?api_key=${this._api_key}&language=en-US`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/tv/top_rated?language=en-US`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchActionMovies() {
-    return fetch(
-      `${this._baseUrl}/discover/movie?api_key=${this._api_key}&with_genres=28`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/discover/movie?with_genres=28`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchComedyMovies() {
-    return fetch(
-      `${this._baseUrl}/discover/movie?api_key=${this._api_key}&with_genres=35`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/discover/movie?with_genres=35`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchRomanticMovies() {
-    return fetch(
-      `${this._baseUrl}/discover/movie?api_key=${this._api_key}&with_genres=10749`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/discover/movie?with_genres=10749`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
   fetchDocumentaries() {
-    return fetch(
-      `${this._baseUrl}/discover/movie?api_key=${this._api_key}&with_genres=99`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/discover/movie?&with_genres=99`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
 
   fetchTvShow(mediaType, tvId) {
-    return fetch(
-      `${this._baseUrl}/${mediaType}/${tvId}?api_key=${this._api_key}&language=en-US`,
-      {
-        headers: this._headers,
-      }
-    ).then((res) => this._handleResponse(res));
+    return fetch(`${this._baseUrl}/${mediaType}/${tvId}?language=en-US`, {
+      headers: {
+        Authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    }).then((res) => this._handleResponse(res));
   }
 }
 const api = new Api({
   baseUrl: "https://api.themoviedb.org/3",
-  headers: {
-    "Content-Type": "application/json;charset=utf-8",
-  },
-  api_key: "fb3f81d85d2eabbafe617fd79ae67b65",
 });
 
 export default api;

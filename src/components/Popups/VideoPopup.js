@@ -2,6 +2,7 @@ import React from "react";
 import closeIcon from "../../images/close-icon.svg";
 import YouTube from "react-youtube";
 import { ColorRing } from "react-loader-spinner";
+import "./VideoPopup.css";
 
 function VideoPopup({ onClose, movie, trailerUrl }) {
   const opts = {

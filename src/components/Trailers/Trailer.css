@@ -1,0 +1,39 @@
+.trailer__title {
+  margin: -10px 0;
+}
+.trailer__posters {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: auto;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 50px 0 50px 24px;
+  list-style-type: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.trailer__posters:active {
+  cursor: grabbing;
+}
+.trailer__posters::-webkit-scrollbar {
+  /* display: none; */
+  width: 5px;
+}
+
+/* Track */
+.trailer__posters::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+/* Handle */
+.trailer__posters::-webkit-scrollbar-thumb {
+  background: #0a0a0a;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.trailer__posters::-webkit-scrollbar-thumb:hover {
+  background: #0a0a0a;
+}

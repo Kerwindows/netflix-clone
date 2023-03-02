@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./MoreInfoBanner.css";
+import "./BannerMoreInfo.css";
 import { ColorRing } from "react-loader-spinner";
 import movieTrailer from "movie-trailer";
 import YouTube from "react-youtube";
-const base_url = "https://image.tmdb.org/t/p/original";
+const base_url = "https://image.tmdb.org/t/p";
 const votes = "https://cdn-icons-png.flaticon.com/128/126/126473.png";
 
-function MoreInfoBanner({ movie }) {
+function BannerMoreInfo({ movie }) {
   const [trailerUrl, setTrailerUrl] = useState("");
   const [movieInfo, setMovieInfo] = useState([]);
 
@@ -65,7 +65,7 @@ function MoreInfoBanner({ movie }) {
         className="more-info-banner"
         style={{
           backgroundSize: "cover",
-          backgroundImage: `url(${base_url}${movieInfo?.backdrop_path})`,
+          backgroundImage: `url(${base_url}/original/${movieInfo?.backdrop_path})`,
           backgroundPosition: "center center",
         }}
       >
@@ -108,7 +108,7 @@ function MoreInfoBanner({ movie }) {
                           <img
                             key={i}
                             className="more-info__banner-logo"
-                            src={`${base_url}${movie.logo_path}`}
+                            src={`${base_url}/w185/${movie.logo_path}`}
                             alt="Logo"
                           />
                         )
@@ -201,4 +201,4 @@ function MoreInfoBanner({ movie }) {
   );
 }
 
-export default MoreInfoBanner;
+export default BannerMoreInfo;

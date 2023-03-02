@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const base_url = "https://image.tmdb.org/t/p/original/";
+import placeholder from "../../images/placeholder.jpg";
+import "./Card.css";
+const base_url = "https://image.tmdb.org/t/p/w342";
 const playButton = "https://cdn-icons-png.flaticon.com/128/483/483054.png";
 const viewMore = "https://cdn-icons-png.flaticon.com/128/2985/2985151.png";
-const placeholder =
-  "https://th.bing.com/th/id/OIP.qTVxMRWnKMxisf_nBYuy-gHaHa?pid=ImgDet&rs=1";
 
-function Card({ movie, onCardClick, size, type }) {
+function Card({ movie, onCardClick, size, type = "tv" }) {
   function handleClick() {
     onCardClick(movie);
   }
@@ -15,9 +15,10 @@ function Card({ movie, onCardClick, size, type }) {
     <li className={`${size != null ? "card card_bg" : "card"}`}>
       <img
         className="card__image"
-        src={`${base_url}${movie.poster_path || placeholder}`}
+        src={`${base_url}${movie.poster_path}` || placeholder}
         alt={movie.name}
       />
+
       <div
         className={`${
           size != null ? "card__info" : "card__info card__info_sm"
@@ -41,15 +42,7 @@ function Card({ movie, onCardClick, size, type }) {
               alt="play"
             />
           </p>
-          <Link
-            to={`${
-              movie.media_type
-                ? movie.media_type
-                : type == null
-                ? "movie"
-                : type
-            }/${movie.id}`}
-          >
+          <Link to={`${movie?.media_type || type || "movie"}/${movie?.id}`}>
             <p className="card__link">
               <img className="card__view-more" src={viewMore} alt="View more" />
             </p>

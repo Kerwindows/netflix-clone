@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../utils/api";
-import Banner from "../MoreInfoBanner/MoreInfoBanner";
-import Nav from "../Nav/Nav";
+import BannerMoreInfo from "../Banners/BannerMoreInfo";
+import Nav from "../Header/Nav";
 
-function Tv() {
+function TrailerMoreInfo() {
   const { mediaType, tvId } = useParams();
-  const [tvShow, setTvShow] = useState([]);
+  const [trailerMoreInfo, setTrailerMoreInfo] = useState([]);
 
   useEffect(() => {
     api.fetchTvShow(mediaType, tvId).then((data) => {
-      setTvShow(data);
+      setTrailerMoreInfo(data);
     });
   }, [mediaType, tvId]);
 
   return (
     <div>
       <Nav />
-      <Banner movie={tvShow} />
+      <BannerMoreInfo movie={trailerMoreInfo} />
     </div>
   );
 }
 
-export default Tv;
+export default TrailerMoreInfo;

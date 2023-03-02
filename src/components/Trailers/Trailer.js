@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Titles.css";
-import Card from "../Card";
+import "./Trailer.css";
+import Card from "../Cards/Card";
 
-function Titles({ title, movies, size, type, onCardClick }) {
+function Trailer({ title, movies, size, type, onCardClick }) {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -32,10 +32,10 @@ function Titles({ title, movies, size, type, onCardClick }) {
   };
 
   return (
-    <div className="titles">
-      <h2 className="titles__title">{title}</h2>
+    <div className="trailer">
+      <h2 className="trailer__title">{title}</h2>
       <ul
-        className="title__posters"
+        className="trailer__posters"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -55,4 +55,4 @@ function Titles({ title, movies, size, type, onCardClick }) {
   );
 }
 
-export default Titles;
+export default Trailer;
