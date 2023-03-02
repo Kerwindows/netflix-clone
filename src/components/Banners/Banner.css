@@ -96,8 +96,10 @@
   color: #000;
 }
 .banner__button-icon-white {
+  -webkit-filter: invert(1);
   filter: invert(1);
 }
 .banner__button:hover .banner__button-icon-white {
+  -webkit-filter: none;
   filter: none;
 }

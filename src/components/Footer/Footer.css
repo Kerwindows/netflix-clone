@@ -1,8 +1,6 @@
 .footer {
   /* max-width: 880px; */
   margin: 0 auto;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 .footer__copyright {

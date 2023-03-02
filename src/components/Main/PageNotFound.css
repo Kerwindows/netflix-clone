@@ -1,0 +1,25 @@
+.not-found {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.not-found__text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  background: green;
+  height: 200px;
+  width: 900px;
+  text-align: center;
+}
+.not-found {
+  container-type: inline-size;
+}
+
+@container (min-width: 700px) {
+  .not-found__text {
+    width: 200px;
+  }
+}

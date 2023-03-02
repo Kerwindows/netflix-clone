@@ -10,7 +10,6 @@
 .card:hover {
   transform: scale(1.2);
   z-index: 1;
-  -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.55);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.55);
 }
 .card_bg {
@@ -19,7 +18,6 @@
 .card_bg:hover {
   transform: scale(1.16);
   z-index: 1;
-  -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.55);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.55);
 }
 .card__image {
@@ -32,20 +30,13 @@
 
 .card__place-title {
   margin: 25px 15px 31px 21px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 .card__place-name {
   margin: 0;
-  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -62,8 +53,6 @@
   background-color: white;
   min-width: 21px;
   height: 19px;
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
   transition: 0.2s;
   color: transparent;
   border: none;
@@ -111,6 +100,7 @@
 }
 .card__play {
   width: 30px;
+  -webkit-filter: invert(100%);
   filter: invert(100%);
   cursor: pointer;
 }
@@ -118,6 +108,7 @@
   width: 30px;
   padding: 10px;
   cursor: pointer;
+  -webkit-filter: invert(100%);
   filter: invert(100%);
 }
 
