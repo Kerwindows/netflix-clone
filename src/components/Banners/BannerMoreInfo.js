@@ -177,18 +177,6 @@ function BannerMoreInfo({ movie }) {
               </a>
             </div>
           </div>
-          <div className="more-info__production">
-            <span className="more-info__title">Production Companies: </span>
-            <div>
-              {movieInfo?.production_companies &&
-                movieInfo?.production_companies.map((prod, i) => (
-                  <span key={prod.id} className="more-info__text">
-                    {prod.name}
-                    {i < movieInfo?.production_companies.length - 1 && ", "}
-                  </span>
-                ))}
-            </div>
-          </div>
           <div className="more-info__languages">
             <span className="more-info__title">Languages: </span>
             <div>
@@ -197,6 +185,18 @@ function BannerMoreInfo({ movie }) {
                   <span key={prod.id} className="more-info__text">
                     {prod.name}
                     {i < movieInfo?.spoken_languages.length - 1 && ", "}
+                  </span>
+                ))}
+            </div>
+          </div>
+          <div className="more-info__production">
+            <span className="more-info__title">Production Companies: </span>
+            <div>
+              {movieInfo?.production_companies &&
+                movieInfo?.production_companies.map((prod, i) => (
+                  <span key={prod.id} className="more-info__text">
+                    {prod.name}
+                    {i < movieInfo?.production_companies.length - 1 && ", "}
                   </span>
                 ))}
             </div>

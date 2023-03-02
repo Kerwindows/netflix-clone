@@ -139,7 +139,7 @@
 }
 .more-info__production {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   font-family: "Inter", Arial, sans-serif;
   padding-top: 10px;
   flex-wrap: wrap;
