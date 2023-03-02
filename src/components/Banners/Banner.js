@@ -10,9 +10,21 @@ function Banner({ movie, onCardClick, type = "tv" }) {
   const [bannerMovie, setBannerMovie] = useState([]);
   const [backgroundImage, setBackgroundImage] = useState("");
 
+  const reload = () => {
+    window.location.reload();
+  };
+
   useEffect(() => {
     setBannerMovie(movie);
-    setBackgroundImage(`${base_url}${movie.backdrop_path}`);
+    setBackgroundImage(
+      `${base_url}${
+        movie.backdrop_path
+          ? movie.backdrop_path
+          : movie.backdrop_path !== "undefined"
+          ? reload
+          : "https://assets.nflxext.com/ffe/siteui/vlv3/d54727b4-2ad9-4e71-bb48-0899f55f103a/231fe309-d117-409a-afc9-c2249d51a97a/US-en-20230220-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+      }` //reload page if no backdrop image
+    );
   }, [movie]);
 
   function handleClick() {
@@ -49,7 +61,7 @@ function Banner({ movie, onCardClick, type = "tv" }) {
                 className="banner__button banner__button-white"
               >
                 <img
-                  className="banner__button-icon"
+                  className="banner__button-play-icon"
                   src={playButton}
                   alt="play button"
                 />
@@ -58,11 +70,11 @@ function Banner({ movie, onCardClick, type = "tv" }) {
 
               <Link
                 className="banner__button-link"
-                to={`${movie?.media_type || type || "movie"}/${movie?.id}`}
+                to={`${movie?.media_type || type || "movie"}/${movie?.id}`} //set default media type to movie if none is provided
               >
                 <button className="banner__button">
                   <img
-                    className="banner__button-icon banner__button-icon-white"
+                    className="banner__button-more-icon banner__button-icon-white"
                     src={moreInfo}
                     alt="info button"
                   />

@@ -33,6 +33,7 @@ function Home() {
         .fetchTrending()
         .then((data) => {
           setPopularPics2(data.results);
+          console.log(data.results);
           return setPopularPics(
             data.results[Math.floor(Math.random() * data.results.length - 1)]
           );

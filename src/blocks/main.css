@@ -4,8 +4,8 @@
   min-width: 320px;
   margin: 0 auto;
   padding-top: 45px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: #fff;
   font-family: "Inter", Arial, sans-serif;
   line-height: 1;
@@ -14,7 +14,7 @@
 @media screen and (max-width: 540px) {
   .main {
     padding-top: 28px;
-    padding-left: 19px;
-    padding-right: 19px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }

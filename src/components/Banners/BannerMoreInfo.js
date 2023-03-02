@@ -34,8 +34,8 @@ function BannerMoreInfo({ movie }) {
     return year;
   }
   const opts = {
-    height: "390",
-    width: "640",
+    minHeight: "390",
+    minWidth: "320",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
@@ -122,7 +122,13 @@ function BannerMoreInfo({ movie }) {
       </header>
       <section className="more-info__description">
         <div className="more-info__video">
-          {(trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />) || (
+          {(trailerUrl && (
+            <YouTube
+              className="more-info__youtube"
+              videoId={trailerUrl}
+              opts={opts}
+            />
+          )) || (
             <ColorRing
               visible={true}
               height="80"
