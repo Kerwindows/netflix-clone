@@ -10,11 +10,11 @@ import VideoPopup from "../Popups/VideoPopup";
 import { ColorRing } from "react-loader-spinner";
 import movieTrailer from "movie-trailer";
 
-function Home() {
+function Discover() {
   // state variable for user info
   const [selectedCard, setSelectedCard] = useState(null);
-  const [popularPics, setPopularPics] = useState({});
-  const [popularPics2, setPopularPics2] = useState([]);
+  const [trendingVideos, setTrendingVideos] = useState({});
+  const [trendingArray, setTrendingArray] = useState([]);
   const [movies, setMovies] = useState({
     netflix: [],
     trending: [],
@@ -32,9 +32,9 @@ function Home() {
       api
         .fetchTrending()
         .then((data) => {
-          setPopularPics2(data.results);
+          setTrendingArray(data.results);
           console.log(data.results);
-          return setPopularPics(
+          return setTrendingVideos(
             data.results[Math.floor(Math.random() * data.results.length - 1)]
           );
         })
@@ -117,12 +117,12 @@ function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       const randomPic =
-        popularPics2[Math.floor(Math.random() * popularPics2.length - 1)];
-      setPopularPics(randomPic);
+        trendingArray[Math.floor(Math.random() * trendingArray.length - 1)];
+      setTrendingVideos(randomPic);
     }, 15000);
 
     return () => clearInterval(interval);
-  }, [popularPics2]);
+  }, [trendingArray]);
 
   function handleCardClick(clickedCard) {
     setSelectedCard(clickedCard);
@@ -192,7 +192,7 @@ function Home() {
         </div>
       ) : (
         <>
-          <Banner movie={popularPics} onCardClick={handleCardClick} />
+          <Banner movie={trendingVideos} onCardClick={handleCardClick} />
           <div className="main">
             <Trailer
               title="NETFLIX ORIGINALS"
@@ -241,4 +241,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Discover;
