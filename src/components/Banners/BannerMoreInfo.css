@@ -158,6 +158,7 @@
 }
 .more-info__video {
   width: 50%;
+  text-align: center;
   transition: 0.3s;
 }
 .more-info__details {
