@@ -12,6 +12,7 @@ function Trailer({ title, movies, size, type, onCardClick }) {
     setMovieList(movies);
   }, [movies]);
 
+  //script for clicking and dragging cards
   const handleMouseDown = (e) => {
     setIsMouseDown(true);
     setStartX(e.pageX - e.currentTarget.offsetLeft);
@@ -21,7 +22,6 @@ function Trailer({ title, movies, size, type, onCardClick }) {
   const handleMouseMove = (e) => {
     if (!isMouseDown) return;
     e.preventDefault();
-
     const currentX = e.pageX - e.currentTarget.offsetLeft;
     const distance = currentX - startX;
     e.currentTarget.scrollLeft = scrollLeft - distance;

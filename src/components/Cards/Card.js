@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import placeholder from "../../images/placeholder.jpg";
 import "./Card.css";
+import placeholder from "../../images/placeholder.jpg";
+
 const base_url = "https://image.tmdb.org/t/p/w342";
 const playButton = "https://cdn-icons-png.flaticon.com/128/483/483054.png";
 const viewMore = "https://cdn-icons-png.flaticon.com/128/2985/2985151.png";
@@ -18,7 +19,6 @@ function Card({ movie, onCardClick, size, type = "tv" }) {
         src={`${base_url}${movie.poster_path}` || placeholder}
         alt={movie.name}
       />
-
       <div
         className={`${
           size != null ? "card__info" : "card__info card__info_sm"

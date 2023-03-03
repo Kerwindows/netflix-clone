@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useCallback } from "react";
 import "../../index.css";
 import api from "../../utils/api";
-import Banner from "../Banners/Banner";
-import Footer from "../Footer/Footer";
-import Trailer from "../Trailers/Trailer";
 import Nav from "../Header/Nav";
+import Banner from "../Banners/Banner";
+import Trailer from "../Trailers/Trailer";
+import Footer from "../Footer/Footer";
 import VideoPopup from "../Popups/VideoPopup";
-import { ColorRing } from "react-loader-spinner";
 import movieTrailer from "movie-trailer";
+import { ColorRing } from "react-loader-spinner";
 
 function Discover() {
-  // state variable for user info
   const [selectedCard, setSelectedCard] = useState(null);
+  const [trailerUrl, setTrailerUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [trendingVideos, setTrendingVideos] = useState({});
   const [trendingArray, setTrendingArray] = useState([]);
   const [movies, setMovies] = useState({
@@ -23,8 +24,6 @@ function Discover() {
     romantic: [],
     documentaries: [],
   });
-  const [trailerUrl, setTrailerUrl] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
