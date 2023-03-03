@@ -17,7 +17,7 @@ class Api {
       },
     }).then((res) => this._handleResponse(res));
   }
-  fetchNetflixOriginal() {
+  fetchNewflixOriginal() {
     return fetch(`${this._baseUrl}/discover/tv?with_network=213`, {
       headers: {
         Authorization: `Bearer ${this._token}`,

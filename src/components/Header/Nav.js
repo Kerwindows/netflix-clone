@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
-import netflixTrailerLogo from "../../images/netflix-trailer-park-logo.svg";
+import trailerWatch from "../../images/trailer-watch-logo.svg";
+import watchAvatar from "../../images/watch-avatar.svg";
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,22 +25,14 @@ function Nav() {
   return (
     <div className={`nav ${scrolled ? "nav_scrolled" : ""}`}>
       <Link to="../discover">
-        <img
-          className="nav__logo"
-          src={`${netflixTrailerLogo}`}
-          alt="Netflix Logo"
-        />
+        <img className="nav__logo" src={`${trailerWatch}`} alt="Movie logo" />
       </Link>
 
       <div className="nav__links">
-        <Link to="../about">
+        <Link class="nav__link" to="../about">
           <span className="nav__about">About</span>
         </Link>
-        <img
-          className="nav__avatar"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          alt="Netflix Avatar"
-        />
+        <img className="nav__avatar" src={watchAvatar} alt="Avatar" />
       </div>
     </div>
   );

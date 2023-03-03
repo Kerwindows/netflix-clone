@@ -16,7 +16,7 @@ function GetStarted() {
         <div className="get-started">
           <div className="get-started__info">
             <h1 className="get-started__title">
-              Unlimited movies, TV shows trailers.
+              Unlimited TV & Movie Trailers
             </h1>
             <h2 className="get-started__subtitle">
               Watch anywhere. Watch anytime.

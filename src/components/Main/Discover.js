@@ -17,7 +17,7 @@ function Discover() {
   const [trendingVideos, setTrendingVideos] = useState({});
   const [trendingArray, setTrendingArray] = useState([]);
   const [movies, setMovies] = useState({
-    netflix: [],
+    newflix: [],
     trending: [],
     action: [],
     comedy: [],
@@ -40,11 +40,11 @@ function Discover() {
           console.log(err);
         });
       api
-        .fetchNetflixOriginal()
+        .fetchNewflixOriginal()
         .then((data) => {
           setMovies((prevMovies) => ({
             ...prevMovies,
-            netflix: data.results.slice(0, 10),
+            newflix: data.results.slice(0, 10),
           }));
         })
         .catch((err) => {
@@ -194,8 +194,8 @@ function Discover() {
           <Banner movie={trendingVideos} onCardClick={handleCardClick} />
           <div className="main">
             <Trailer
-              title="NETFLIX ORIGINALS"
-              movies={movies.netflix}
+              title="NEW ORIGINALS"
+              movies={movies.newflix}
               size="big"
               type="tv"
               onCardClick={handleCardClick}

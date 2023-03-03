@@ -1,6 +1,6 @@
 .get-started {
   background-size: "cover";
-  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/d54727b4-2ad9-4e71-bb48-0899f55f103a/231fe309-d117-409a-afc9-c2249d51a97a/US-en-20230220-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  background-image: url(../../images/backdrop.jpg);
   height: 100vh;
 }
 .get-started__info {

@@ -10,7 +10,7 @@
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 50px 0 50px 24px;
+  padding: 40px 0 30px 24px;
   list-style-type: none;
   -webkit-overflow-scrolling: touch;
   cursor: -webkit-grab;
@@ -44,5 +44,8 @@
 @media screen and (max-width: 479px) {
   .trailer__title {
     padding-left: 11px;
+  }
+  .trailer__posters {
+    padding: 40px 0 40px 24px;
   }
 }

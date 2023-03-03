@@ -6,7 +6,7 @@ function Footer() {
     <>
       <footer className="footer">
         <p className="footer__copyright">
-          © {new Date().getFullYear()} Netflix Preview
+          © {new Date().getFullYear()} Trailer Watch
         </p>
       </footer>
     </>

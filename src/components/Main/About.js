@@ -8,16 +8,14 @@ function About() {
   const [loaded, setLoaded] = useState(false);
 
   const skills = [
-    { name: "React", level: 80 },
-    { name: "Node", level: 50 },
-    { name: "Express", level: 60 },
-    { name: "HTML", level: 90 },
-    { name: "CSS", level: 90 },
-    { name: "JavaScript", level: 80 },
-    { name: "PHP", level: 85 },
-    { name: "MySQL", level: 80 },
-    { name: "PostgreSQL", level: 50 },
-    { name: "MongoDB", level: 66 },
+    { lang: "Node", level: 70 },
+    { lang: "React", level: 85 },
+    { lang: "Express", level: 75 },
+    { lang: "MongoDB", level: 80 },
+    { lang: "JavaScript", level: 80 },
+    { lang: "PHP", level: 90 },
+    { lang: "MySQL", level: 90 },
+    { lang: "PostgreSQL", level: 70 },
   ];
 
   useEffect(() => {
@@ -38,7 +36,7 @@ function About() {
               <img
                 className="about__image"
                 src="https://media.licdn.com/dms/image/C5603AQG4owklox6HkA/profile-displayphoto-shrink_200_200/0/1517013629179?e=1683158400&v=beta&t=Hyl7RuBmoun7IBlJPiUsTvn9j2enMu08Bw4ToPpnhGU"
-                alt=""
+                alt="Kerwin Thompson"
               />
               <div className="about__author">
                 <h1 className="about__name">Kerwin Thompson</h1>
@@ -46,10 +44,10 @@ function About() {
                   Software Engineer | Full Stack Developer
                 </h4>
                 <ul className="about__skills-list">
-                  {skills.map((skill) => {
+                  {skills.map((skill, i) => {
                     return (
-                      <li className="about__skill" key={skill.name}>
-                        <span>{skill.name}</span>
+                      <li className="about__skill" key={i}>
+                        <span>{skill.lang}</span>
                         <div className="about__progress-bar">
                           <div
                             className="about__progress-bar-fill"
