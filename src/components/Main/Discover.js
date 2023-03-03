@@ -34,7 +34,7 @@ function Discover() {
           setTrendingArray(data.results);
           console.log(data.results);
           return setTrendingVideos(
-            data.results[Math.floor(Math.random() * data.results.length - 1)]
+            data.results[Math.floor(Math.random() * data.results.length)]
           );
         })
         .catch((err) => {
