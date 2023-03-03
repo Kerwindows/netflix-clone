@@ -34,9 +34,7 @@ function Discover() {
           setTrendingArray(data.results);
           console.log(data.results);
           return setTrendingVideos(
-            data.results[
-              Math.abs(Math.floor(Math.random() * data.results.length - 1))
-            ]
+            data.results[Math.floor(Math.random() * data.results.length - 1)]
           );
         })
         .catch((err) => {
@@ -117,9 +115,8 @@ function Discover() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      let index = Math.floor(Math.random() * trendingArray.length - 1);
-      //set any random negative index to positive: dont know why a negative number occurs though
-      const randomVideo = trendingArray[Math.abs(index)];
+      const randomVideo =
+        trendingArray[Math.floor(Math.random() * trendingArray.length)];
 
       setTrendingVideos(randomVideo);
     }, 15000);
