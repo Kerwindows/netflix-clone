@@ -1,0 +1,102 @@
+.about {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.about__info {
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.about__image {
+  width: 100%;
+  border-radius: 50%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  border: 3px solid #000;
+  outline: 2px solid #fff;
+  transition: all 0.3s ease-in-out;
+}
+.about__author {
+  margin-bottom: 10px;
+}
+.about__author {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__name {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.about__title {
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.about__skills {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.about__skills-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.about__skill {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about__progress-bar {
+  height: 10px;
+  background-color: #24232357;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 200px;
+  margin-left: 10px;
+}
+
+.about__progress-bar-fill {
+  height: 100%;
+  background-color: #d81f26;
+  background-image: linear-gradient(45deg, #641d1d, transparent);
+  width: 0;
+  transition: width 1s ease-in-out;
+}
+
+.about__progress-bar-fill.loaded {
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .about__info {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+  .about__image {
+    width: 280px;
+    margin-top: 160px;
+  }
+}

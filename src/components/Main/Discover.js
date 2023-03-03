@@ -32,7 +32,6 @@ function Discover() {
         .fetchTrending()
         .then((data) => {
           setTrendingArray(data.results);
-          console.log(data.results);
           return setTrendingVideos(
             data.results[Math.floor(Math.random() * data.results.length)]
           );
@@ -144,7 +143,7 @@ function Discover() {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.name || movie?.title || "", { tmdbId: movie?.id })
+      movieTrailer(movie?.name || movie?.title || movie?.original_name)
         .then((url) => {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));

@@ -4,6 +4,7 @@ import Discover from "./Main/Discover";
 import PageNotFound from "./Main/PageNotFound";
 import GetStarted from "./Main/GetStarted";
 import TrailerMoreInfo from "./Trailers/TrailerMoreInfo";
+import About from "./Main/About";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Routes>
         <Route path="discover" element={<Discover />} />
         <Route path="discover/:mediaType/:tvId" element={<TrailerMoreInfo />} />
-        {/* <Route path="contact" element={<Contact />} /> */}
+        <Route path="about" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
         <Route exact path="/" element={<GetStarted />}></Route>
       </Routes>

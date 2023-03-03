@@ -48,3 +48,17 @@
   object-fit: contain;
   cursor: pointer;
 }
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+}
+.nav__about {
+  color: #fff;
+  padding: 0 20px;
+  cursor: pointer;
+  text-decoration: none;
+}

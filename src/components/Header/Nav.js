@@ -30,11 +30,17 @@ function Nav() {
           alt="Netflix Logo"
         />
       </Link>
-      <img
-        className="nav__avatar"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-        alt="Netflix Avatar"
-      />
+
+      <div className="nav__links">
+        <Link to="../about">
+          <span className="nav__about">About</span>
+        </Link>
+        <img
+          className="nav__avatar"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+          alt="Netflix Avatar"
+        />
+      </div>
     </div>
   );
 }

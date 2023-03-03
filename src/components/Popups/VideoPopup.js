@@ -47,7 +47,7 @@ function VideoPopup({ onClose, movie, trailerUrl }) {
           />
         )}
         <p className="popup__card-image-preview-name">
-          {(!trailerUrl && "Cannot be found") ||
+          {(!trailerUrl && "No trailer found") ||
             (movie && movie?.name ? movie?.name : movie?.title)}
         </p>
       </div>
