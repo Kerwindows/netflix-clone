@@ -19,11 +19,7 @@ function Card({ movie, onCardClick, size, type = "movie" }) {
         src={`${base_url}${movie.poster_path}` || placeholder}
         alt={movie.name}
       />
-      <div
-        className={`${
-          size != null ? "card__info" : "card__info card__info_sm"
-        }`}
-      >
+      <div className={`${size ? "card__info card__info_bg" : "card__info"}`}>
         <div className="card__info-top">
           <h3
             className={`${size ? "card__title" : "card__title card__title_sm"}`}

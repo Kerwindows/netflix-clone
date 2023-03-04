@@ -53,11 +53,11 @@
   width: calc(100% - 38px);
   padding: 34px 36px 36px 36px;
   background-color: #fff;
-
   position: relative;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   transition: 0.3s;
+  text-align: center;
 }
 
 .popup__close-btn {
@@ -129,9 +129,8 @@
 
 .popup__form-image {
   background: none;
-  max-width: 75vw;
-  max-height: 75vh;
-  width: auto;
+  max-width: 85%;
+  max-height: 85vh;
   padding: 0;
   margin: auto;
   box-shadow: none;
@@ -170,6 +169,9 @@
   font-size: 12px;
   color: red;
   margin-bottom: 0;
+}
+.popup__form-card iframe {
+  width: 100%;
 }
 
 @media screen and (max-width: 540px) {

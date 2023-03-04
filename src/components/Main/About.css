@@ -31,6 +31,9 @@
   transition: all 0.3s ease-in-out;
   filter: brightness(0.7);
 }
+.about__image:hover {
+  filter: brightness(1);
+}
 
 .about__author {
   margin-bottom: 10px;

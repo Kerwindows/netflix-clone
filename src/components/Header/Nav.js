@@ -33,7 +33,9 @@ function Nav() {
         <Link className="nav__link" to="../about">
           <span className="nav__about">About</span>
         </Link>
-        <BiSearch className="nav__icon" />
+        <Link className="nav__link" to="../search">
+          <BiSearch className="nav__icon" />
+        </Link>
         <img className="nav__avatar" src={watchAvatar} alt="Avatar" />
       </div>
     </div>

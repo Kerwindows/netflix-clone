@@ -73,6 +73,17 @@ class Api {
       },
     }).then((res) => this._handleResponse(res));
   }
+  queryMovieSearch(query) {
+    return fetch(
+      `${this._baseUrl}/search/movie?query=${query}&language=en-US&include_adult=false&page=1`,
+      {
+        headers: {
+          Authorization: `Bearer ${this._token}`,
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      }
+    ).then((res) => this._handleResponse(res));
+  }
 
   fetchTvShow(mediaType, tvId) {
     return fetch(`${this._baseUrl}/${mediaType}/${tvId}?language=en-US`, {

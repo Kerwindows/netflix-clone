@@ -3,6 +3,7 @@ import Nav from "../Header/Nav";
 import Footer from "../Footer/Footer";
 import { animated, useSpring } from "@react-spring/web";
 import "./About.css";
+import logo from "../../images/kodelamp.png";
 import {
   FaFacebookF,
   FaInstagram,
@@ -10,8 +11,7 @@ import {
   FaWhatsapp,
   FaGithubAlt,
 } from "react-icons/fa";
-const logo =
-  "https://github.com/kodelamp/kodelamp-cyversify-code-repository/blob/main/img/kodelamp.png";
+
 function About() {
   const [loaded, setLoaded] = useState(false);
 
@@ -71,6 +71,7 @@ function About() {
                   src="https://media.licdn.com/dms/image/C5603AQG4owklox6HkA/profile-displayphoto-shrink_200_200/0/1517013629179?e=1683158400&v=beta&t=Hyl7RuBmoun7IBlJPiUsTvn9j2enMu08Bw4ToPpnhGU"
                   alt="Kerwin Thompson"
                 />
+
                 <div className="about__socials">
                   <div className="about__social">
                     {SocialShare.map((val, i) => (
@@ -110,18 +111,18 @@ function About() {
                 src={logo}
                 alt="Kodelamp"
               />
+
               <div>
+                <p className="about__short-note">
+                  "I had a great time creating this Frontend project and sharing
+                  it with you. This was my final project for the Software
+                  Engineering Bootcamp at Practicum 2022 - 2023. I hope you
+                  enjoy it as much as I enjoyed making it."
+                </p>
                 <h1 className="about__name">Kerwin Thompson</h1>
                 <h4 className="about__title">
                   Software Engineer | Full Stack Developer
                 </h4>
-                <p className="about__short-note">
-                  I had a great time creating this Frontend project and sharing
-                  it with you. This was my final project for the Software
-                  Engineering Bootcamp at Practicum. It was created with React
-                  and the TMDB API. I hope you enjoy it as much as I enjoyed
-                  making it.
-                </p>
               </div>
             </article>
           </section>
