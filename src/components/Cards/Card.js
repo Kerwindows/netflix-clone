@@ -7,13 +7,13 @@ const base_url = "https://image.tmdb.org/t/p/w342";
 const playButton = "https://cdn-icons-png.flaticon.com/128/483/483054.png";
 const viewMore = "https://cdn-icons-png.flaticon.com/128/2985/2985151.png";
 
-function Card({ movie, onCardClick, size, type = "tv" }) {
+function Card({ movie, onCardClick, size, type = "movie" }) {
   function handleClick() {
     onCardClick(movie);
   }
 
   return (
-    <li className={`${size != null ? "card card_bg" : "card"}`}>
+    <li className={`${size ? "card card_bg" : "card"}`}>
       <img
         className="card__image"
         src={`${base_url}${movie.poster_path}` || placeholder}
@@ -26,9 +26,7 @@ function Card({ movie, onCardClick, size, type = "tv" }) {
       >
         <div className="card__info-top">
           <h3
-            className={`${
-              size != null ? "card__title" : "card__title card__title_sm"
-            }`}
+            className={`${size ? "card__title" : "card__title card__title_sm"}`}
           >
             {movie.title || movie.name || movie.original_title}
           </h3>
@@ -37,14 +35,22 @@ function Card({ movie, onCardClick, size, type = "tv" }) {
           <p className="card__links">
             <img
               onClick={handleClick}
-              className="card__play"
+              className={`${size ? "card__play card__play_bg" : "card__play"}`}
               src={playButton}
               alt="play"
             />
           </p>
           <Link to={`${movie?.media_type || type || "movie"}/${movie?.id}`}>
             <p className="card__link">
-              <img className="card__view-more" src={viewMore} alt="View more" />
+              <img
+                className={`${
+                  size
+                    ? "card__view-more card__view-more_bg"
+                    : "card__view-more"
+                }`}
+                src={viewMore}
+                alt="View more"
+              />
             </p>
           </Link>
         </div>

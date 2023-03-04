@@ -27,7 +27,7 @@
 }
 .more-info__banner-description {
   font-size: 1rem;
-  width: 45rem;
+  width: 100%;
   line-height: 1.3;
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -168,6 +168,9 @@
 .more-info__youtube iframe#widget4 {
   width: 100%;
 }
+.more-info__youtube iframe {
+  width: 100%;
+}
 @media screen and (max-width: 1080px) {
   .more-info__description {
     flex-direction: column;
@@ -183,5 +186,8 @@
   .more-info__banner-description {
     font-size: 0.8rem;
     max-width: 360px;
+  }
+  .more-info__youtube iframe {
+    height: 300px;
   }
 }

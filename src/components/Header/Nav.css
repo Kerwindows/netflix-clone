@@ -1,8 +1,9 @@
 .nav {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,14 +12,13 @@
   transition: 0.3s;
 }
 .nav_scrolled {
-  height: 80px;
   background-color: #0a0a0a;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
 }
 .nav__logo {
   width: 100px;
-  height: 100px;
+  height: auto;
   -o-object-fit: contain;
   object-fit: contain;
 }
@@ -31,17 +31,24 @@
 }
 .nav__link {
   text-decoration: none;
-  color: #000;
-  margin-right: 10px;
+  color: #fff;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s ease-in-out;
 }
+
 .nav__link:hover {
   color: #e50914;
   transition: all 0.2s ease-in-out;
 }
 .nav__avatar {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: contain;
+  object-fit: contain;
+  cursor: pointer;
+}
+.nav__icon {
   width: 30px;
   height: 30px;
   -o-object-fit: contain;
@@ -56,16 +63,15 @@
   color: #fff;
   font-family: "Inter", Arial, sans-serif;
 }
-.nav__link {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 400;
-  transition: all 0.2s ease-in-out;
-}
+
 .nav__about {
   color: #fff;
   padding: 0 20px;
   cursor: pointer;
   text-decoration: none;
+}
+@media screen and (max-width: 540px) {
+  .nav__logo {
+    width: 78px;
+  }
 }

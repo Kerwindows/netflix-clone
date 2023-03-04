@@ -33,9 +33,3 @@ It was built with industry-standard code using the MERN Stack.
 Sign up for your free API account.
 
 - [API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
-
-Install [dotenv](https://www.npmjs.com/package/dotenv?activeTab=readme)
-
-Enter your api token in the dotenv file eg.
-
-API_TOKEN=<<your_api_token>>

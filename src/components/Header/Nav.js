@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 import trailerWatch from "../../images/trailer-watch-logo.svg";
 import watchAvatar from "../../images/watch-avatar.svg";
+import { BiSearch } from "react-icons/bi";
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,9 +30,10 @@ function Nav() {
       </Link>
 
       <div className="nav__links">
-        <Link class="nav__link" to="../about">
+        <Link className="nav__link" to="../about">
           <span className="nav__about">About</span>
         </Link>
+        <BiSearch className="nav__icon" />
         <img className="nav__avatar" src={watchAvatar} alt="Avatar" />
       </div>
     </div>

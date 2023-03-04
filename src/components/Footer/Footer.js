@@ -6,7 +6,7 @@ function Footer() {
     <>
       <footer className="footer">
         <p className="footer__copyright">
-          © {new Date().getFullYear()} Trailer Watch
+          © {new Date().getFullYear()} Trailer Watch. All Rights Reserved.
         </p>
       </footer>
     </>

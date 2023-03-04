@@ -45,7 +45,7 @@ function BannerMoreInfo({ movie }) {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.name || movie?.title || movie?.original_name)
+      movieTrailer(movie?.title || movie?.name || movie?.original_name)
         .then((url) => {
           console.log("url", url);
           if (url) {
