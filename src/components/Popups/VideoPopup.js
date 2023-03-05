@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import closeIcon from "../../images/close-icon.svg";
 import YouTube from "react-youtube";
 import { ColorRing } from "react-loader-spinner";
 import "./VideoPopup.css";
 
 function VideoPopup({ onClose, movie, trailerUrl }) {
+  const [loadingWords, setLoadingWords] = useState("Searching for Trailer...");
+  const [timeoutId, setTimeoutId] = useState(null);
+
   const opts = {
     height: "390",
     width: "640",
@@ -14,13 +17,50 @@ function VideoPopup({ onClose, movie, trailerUrl }) {
     },
   };
 
+  function closeVideo() {
+    onClose();
+    setLoadingWords("Searching for Trailer...");
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    setTimeoutId(
+      setTimeout(() => {
+        setLoadingWords("Trailer cannot be found");
+      }, 15000)
+    );
+  }
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        setLoadingWords("Searching for Trailer...");
+      }
+    };
+    document.addEventListener("keydown", closeByEscape);
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, [trailerUrl]);
+
+  useEffect(() => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    if (!trailerUrl) {
+      setLoadingWords("Searching for Trailer...");
+      setTimeoutId(
+        setTimeout(() => {
+          setLoadingWords("Trailer cannot be found");
+        }, 15000)
+      );
+    }
+    // eslint-disable-next-line
+  }, [trailerUrl]);
+
   return (
     <div className={`popup ${movie && "popup_opened"}`}>
-      {/* <div className={`popup popup_opened`}> */}
       <div className="popup__overlay"></div>
       <div className="popup__form-card popup__form-image">
         <button
-          onClick={onClose}
+          onClick={closeVideo}
           aria-label="Close Form Button"
           className="popup__close-btn popup__image-close-btn"
           type="button"
@@ -47,7 +87,7 @@ function VideoPopup({ onClose, movie, trailerUrl }) {
           />
         )}
         <p className="popup__card-image-preview-name">
-          {(!trailerUrl && "Searching for Trailer...") ||
+          {(!trailerUrl && loadingWords) ||
             (movie && movie?.name ? movie?.name : movie?.title)}
         </p>
       </div>

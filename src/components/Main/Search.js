@@ -5,10 +5,11 @@ import Nav from "../Header/Nav";
 import Card from "../Cards/Card";
 import SearchPopup from "../Popups/SearchPopup";
 import Footer from "../Footer/Footer";
+import VideoPopup from "../Popups/VideoPopup";
 import { ColorRing } from "react-loader-spinner";
 import "./Search.css";
 
-function Search() {
+function Search({ handleCardClick, trailerUrl, selectedCard, closeAllPopups }) {
   const { query } = useParams();
   const [trailerInfo, setTrailerInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -61,12 +62,21 @@ function Search() {
           <ul className="search__posters">
             {trailerInfo &&
               trailerInfo?.map((movie) => (
-                <Card key={movie.id} movie={movie} />
+                <Card
+                  key={movie.id}
+                  movie={movie}
+                  onCardClick={handleCardClick}
+                />
               ))}
           </ul>
         )}
       </section>
       <Footer />
+      <VideoPopup
+        movie={selectedCard}
+        onClose={closeAllPopups}
+        trailerUrl={trailerUrl}
+      />
     </div>
   );
 }

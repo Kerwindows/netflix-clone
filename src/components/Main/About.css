@@ -4,8 +4,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 30px;
+  margin: 0 auto;
   min-height: 100vh;
+  max-width: 1080px;
+  text-align: center;
 }
 .about__info {
   box-sizing: border-box;
@@ -14,25 +17,24 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
   color: #fff;
   font-family: "Inter", Arial, sans-serif;
   line-height: 1;
   border-radius: 10px;
+  margin-top: 40px;
 }
 .about__image {
   width: 100%;
-  border-radius: 50%;
   max-width: 300px;
+  border-radius: 50%;
   margin-bottom: 20px;
-  border: 3px solid #0d7e80;
+  border: 3px solid #000;
   outline: 2px solid #fff;
   transition: all 0.3s ease-in-out;
-  filter: brightness(0.7);
+  filter: grayscale(1);
 }
 .about__image:hover {
-  filter: brightness(1);
+  filter: grayscale(0);
 }
 
 .about__author {
@@ -42,18 +44,25 @@
   display: flex;
   flex-direction: column;
 }
-
-.about__name {
+.about__project {
+  width: 100%;
+}
+.about__project-title {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 15px;
 }
-
-.about__title {
-  font-size: 18px;
-  font-weight: normal;
-  margin-top: 0;
-  margin-bottom: 15px;
+.about__project-description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5rem;
+  padding: 0;
+  color: #fff;
+}
+.about__developer {
+  width: 100%;
+  line-height: 1.5rem;
+  margin-top: 40px;
 }
 
 .about__skills {
@@ -100,11 +109,10 @@
 .about__social {
   position: absolute;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 120px;
   width: 100%;
 }
 .about__social-icon {
@@ -139,33 +147,23 @@
   line-height: 1.5rem;
   padding: 0;
 }
+
 .about___developer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 .about__developer-logo {
-  width: 255px;
+  width: 138px;
 }
 @media screen and (max-width: 768px) {
   .about__info {
     flex-direction: column;
-    padding: 20px 0;
   }
   .about___developer {
     flex-direction: column;
   }
   .about__image {
     width: 180px;
-    margin-top: 160px;
-  }
-  .about__name {
-    text-align: center;
-  }
-  .about__title {
-    text-align: center;
-  }
-  .about__short-note {
-    text-align: center;
   }
 }

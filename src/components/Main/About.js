@@ -3,7 +3,6 @@ import Nav from "../Header/Nav";
 import Footer from "../Footer/Footer";
 import { animated, useSpring } from "@react-spring/web";
 import "./About.css";
-import logo from "../../images/kodelamp.png";
 import {
   FaFacebookF,
   FaInstagram,
@@ -45,7 +44,7 @@ function About() {
     },
     {
       Social: <FaWhatsapp className="about__social-icon about__whatsapp" />,
-      link: "https://www.pinterest.com/",
+      link: "https://wa.me/message/R4FYYAOFBHAWL1",
     },
   ];
 
@@ -64,6 +63,25 @@ function About() {
       <div className="main">
         <animated.div style={style}>
           <section className="about">
+            <div className="about__project">
+              <h1 className="about__project-title">About Project</h1>
+              <p className="about__project-description">
+                The Frontend project was built using the React library and the
+                TMDB API. It is a single-page application that allows users to
+                search for movies, view information about them, and watch
+                trailers.
+              </p>
+            </div>
+            <div className="about__developer">
+              <h1 className="about__developer-name">About Developer</h1>
+              <p>
+                I am a former teacher who has transitioned into an application
+                developer. I had a great time creating this Frontend project and
+                sharing it with you. This was my final project for the Software
+                Engineering Bootcamp at Practicum 2022 - 2023. I hope you enjoy
+                it as much as I enjoyed making it. - Kerwin Thompson
+              </p>
+            </div>
             <div className="about__info">
               <div>
                 <img
@@ -105,26 +123,6 @@ function About() {
                 </ul>
               </div>
             </div>
-            <article className="about___developer">
-              <img
-                className="about__developer-logo"
-                src={logo}
-                alt="Kodelamp"
-              />
-
-              <div>
-                <p className="about__short-note">
-                  "I had a great time creating this Frontend project and sharing
-                  it with you. This was my final project for the Software
-                  Engineering Bootcamp at Practicum 2022 - 2023. I hope you
-                  enjoy it as much as I enjoyed making it."
-                </p>
-                <h1 className="about__name">Kerwin Thompson</h1>
-                <h4 className="about__title">
-                  Software Engineer | Full Stack Developer
-                </h4>
-              </div>
-            </article>
           </section>
         </animated.div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useCallback } from "react";
+
 import "../../index.css";
 import api from "../../utils/api";
 import Nav from "../Header/Nav";
@@ -7,12 +7,15 @@ import Banner from "../Banners/Banner";
 import Trailer from "../Trailers/Trailer";
 import Footer from "../Footer/Footer";
 import VideoPopup from "../Popups/VideoPopup";
-import movieTrailer from "movie-trailer";
+
 import { ColorRing } from "react-loader-spinner";
 
-function Discover() {
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [trailerUrl, setTrailerUrl] = useState("");
+function Discover({
+  handleCardClick,
+  trailerUrl,
+  selectedCard,
+  closeAllPopups,
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [trendingVideos, setTrendingVideos] = useState({});
   const [trendingArray, setTrendingArray] = useState([]);
@@ -122,48 +125,6 @@ function Discover() {
 
     return () => clearInterval(interval);
   }, [trendingArray]);
-
-  function handleCardClick(clickedCard) {
-    setSelectedCard(clickedCard);
-    getTrailer(clickedCard);
-  }
-
-  function closeAllPopups() {
-    setSelectedCard(null);
-    getTrailer("");
-  }
-  // eslint-disable-next-line
-  const closeAllPopupsCallback = useCallback(closeAllPopups, []);
-  const getTrailerCallback = useCallback(getTrailer, [
-    trailerUrl,
-    setTrailerUrl,
-  ]);
-
-  function getTrailer(movie) {
-    if (trailerUrl) {
-      setTrailerUrl("");
-    } else {
-      movieTrailer(movie?.name || movie?.title || movie?.original_name)
-        .then((url) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v"));
-        })
-        .catch((error) => {
-          console.log(error);
-          setTrailerUrl("");
-        });
-    }
-  }
-  useEffect(() => {
-    const closeByEscape = (e) => {
-      if (e.key === "Escape") {
-        closeAllPopupsCallback();
-        getTrailerCallback("");
-      }
-    };
-    document.addEventListener("keydown", closeByEscape);
-    return () => document.removeEventListener("keydown", closeByEscape);
-  }, [closeAllPopupsCallback, getTrailerCallback]);
 
   return (
     <>

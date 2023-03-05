@@ -36,7 +36,11 @@ function Card({ movie, onCardClick, size, type = "movie" }) {
               alt="play"
             />
           </p>
-          <Link to={`${movie?.media_type || type || "movie"}/${movie?.id}`}>
+          <Link
+            to={`../discover/${movie?.media_type || type || "movie"}/${
+              movie?.id
+            }`}
+          >
             <p className="card__link">
               <img
                 className={`${
