@@ -29,6 +29,7 @@
 }
 .search-popup__button {
   background-color: transparent;
+  -webkit-filter: invert(1);
   filter: invert(1);
   cursor: pointer;
   border: none;

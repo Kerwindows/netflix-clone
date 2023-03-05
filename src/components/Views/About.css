@@ -1,11 +1,12 @@
 .about {
   box-sizing: border-box;
   padding: 0 30px;
-  margin: 60px auto;
+  margin: 100px auto;
   max-width: 1080px;
   text-align: center;
 }
 .about__info {
+  margin-top: 60px;
   box-sizing: border-box;
   display: flex;
   gap: 50px;
@@ -16,7 +17,6 @@
   font-family: "Inter", Arial, sans-serif;
   line-height: 1;
   border-radius: 10px;
-  margin-top: 40px;
 }
 .about__image {
   width: 100%;
@@ -26,9 +26,11 @@
   border: 3px solid #000;
   outline: 2px solid #fff;
   transition: all 0.3s ease-in-out;
+  -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
 .about__image:hover {
+  -webkit-filter: grayscale(0);
   filter: grayscale(0);
 }
 
@@ -57,7 +59,7 @@
 .about__developer {
   width: 100%;
   line-height: 1.5rem;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .about__skills {
