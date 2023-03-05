@@ -43,9 +43,6 @@
 }
 
 @media screen and (max-width: 479px) {
-  .trailer__title {
-    padding-left: 11px;
-  }
   .trailer__posters {
     padding: 40px 0 40px 24px;
   }

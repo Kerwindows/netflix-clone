@@ -63,14 +63,17 @@ function BannerMoreInfo({ movie }) {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(
-        movie?.imdb_id
-          ? (null, { tmdbId: movie?.imdb_id })
-          : movie?.title || movie?.name || movie?.original_name,
-        {
-          year: movie?.release_date?.slice(0, 4),
-        }
-      )
+      // movieTrailer(
+      //   movie?.imdb_id
+      //     ? (null, { tmdbId: movie?.imdb_id })
+      //     : movie?.title || movie?.name || movie?.original_name,
+      //   {
+      //     year: movie?.release_date?.slice(0, 4),
+      //   }
+      // )
+      movieTrailer(movie?.title || movie?.name || movie?.original_name, {
+        year: movie?.release_date?.slice(0, 4),
+      })
         .then((url) => {
           console.log("url", url);
           if (url) {
