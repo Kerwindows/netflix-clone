@@ -75,11 +75,11 @@ function About() {
             <div className="about__developer">
               <h1 className="about__developer-name">About Developer</h1>
               <p>
-                I am a former teacher who has transitioned into an application
-                developer. I had a great time creating this Frontend project and
-                sharing it with you. This was my final project for the Software
-                Engineering Bootcamp at Practicum 2022 - 2023. I hope you enjoy
-                it as much as I enjoyed making it. - Kerwin Thompson
+                I am a former high school teacher who has transitioned into
+                software development. I had a great time creating this project
+                and sharing it with you. This was my final project for the
+                Software Engineering Bootcamp at Practicum (2022 - 2023). I hope
+                you enjoy it as much as I enjoyed making it. - Kerwin Thompson
               </p>
             </div>
             <div className="about__info">
