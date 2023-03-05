@@ -28,7 +28,7 @@
   font-size: 3rem;
   font-weight: 800;
   padding-bottom: 0.5rem;
-  text-shadow: 1px 1px 49x black;
+  text-shadow: 1px 1px 3px #000000ad;
 }
 .banner__description {
   font-size: 1rem;
@@ -37,11 +37,10 @@
   padding-bottom: 1rem;
   max-width: 360px;
   height: 80px;
-  text-shadow: 1px 1px 4px black;
+  text-shadow: 1px 1px 3px #000000ad;
 }
 .banner__buttons {
   display: flex;
-  height: 60px;
   margin-right: 1rem;
   margin-top: 1rem;
   font-size: 1rem;
@@ -62,7 +61,6 @@
   color: #fff;
   cursor: pointer;
   align-items: center;
-  gap: 10px;
   transition: all 0.3s ease-in-out;
 }
 .banner__button:hover {
@@ -84,10 +82,10 @@
   right: 0;
 }
 .banner__button-play-icon {
-  width: 30px;
+  font-size: 30px;
 }
 .banner__button-more-icon {
-  width: 29px;
+  font-size: 30px;
 }
 .banner__button-text {
   margin: 0;
@@ -103,22 +101,23 @@
   -webkit-filter: invert(1);
   filter: invert(1);
 }
+.banner__button-icon {
+  font-size: 30px;
+}
 .banner__button:hover .banner__button-icon-white {
   -webkit-filter: none;
   filter: none;
 }
 @media screen and (max-width: 479px) {
   .banner__button {
-    padding: 1rem 1.2rem;
+    padding: 0.7rem 1.2rem;
   }
   .banner__button-text {
     font-size: 1rem;
   }
   .banner__button-play-icon {
-    width: 20px;
   }
   .banner__button-more-icon {
-    width: 28px;
   }
   .banner__title {
     font-size: 2rem;

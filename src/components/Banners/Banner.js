@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { animated, useSpring } from "@react-spring/web";
 import "./Banner.css";
+import { BsFillPlayFill } from "react-icons/bs";
+import { BiInfoCircle } from "react-icons/bi";
+
 const base_url = "https://image.tmdb.org/t/p/original/";
-const playButton = "https://cdn-icons-png.flaticon.com/128/727/727245.png";
-const moreInfo = "https://cdn-icons-png.flaticon.com/128/6583/6583141.png";
 
 function Banner({ movie, onCardClick, type = "tv" }) {
   const [bannerMovie, setBannerMovie] = useState([]);
@@ -60,11 +61,7 @@ function Banner({ movie, onCardClick, type = "tv" }) {
                 onClick={handleClick}
                 className="banner__button banner__button-white"
               >
-                <img
-                  className="banner__button-play-icon"
-                  src={playButton}
-                  alt="play button"
-                />
+                <BsFillPlayFill className="banner__button-play-icon" />
                 <p className="banner__button-text">Play</p>
               </button>
 
@@ -73,11 +70,7 @@ function Banner({ movie, onCardClick, type = "tv" }) {
                 to={`${movie?.media_type || type || "movie"}/${movie?.id}`} //set default media type to movie if none is provided
               >
                 <button className="banner__button">
-                  <img
-                    className="banner__button-more-icon banner__button-icon-white"
-                    src={moreInfo}
-                    alt="info button"
-                  />
+                  <BiInfoCircle className="banner__button-icon" />
                   <p className="banner__button-text">More Info</p>
                 </button>
               </Link>
