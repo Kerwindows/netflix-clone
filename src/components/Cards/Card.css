@@ -63,6 +63,8 @@
 }
 .card__title {
   margin: 0;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
 }
 .card__title_sm {
   font-size: 12px;
@@ -81,7 +83,7 @@
   z-index: -1;
   box-sizing: border-box;
   text-decoration: none;
-  background: #181818e5;
+  background: #000000e5;
   position: absolute;
   bottom: 0;
   width: 100%;

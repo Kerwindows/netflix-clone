@@ -12,7 +12,7 @@ function SearchPopup() {
 
   return (
     <div className="search-popup">
-      <div className="search-popup__container">
+      <form className="search-popup__container">
         <input
           className="search-popup__input"
           type="text"
@@ -27,7 +27,7 @@ function SearchPopup() {
             <BiSearch />
           </button>
         </Link>
-      </div>
+      </form>
     </div>
   );
 }

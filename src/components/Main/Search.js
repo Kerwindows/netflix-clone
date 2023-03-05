@@ -5,19 +5,30 @@ import Nav from "../Header/Nav";
 import Card from "../Cards/Card";
 import SearchPopup from "../Popups/SearchPopup";
 import Footer from "../Footer/Footer";
+import { ColorRing } from "react-loader-spinner";
 import "./Search.css";
 
 function Search() {
   const { query } = useParams();
   const [trailerInfo, setTrailerInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    api.queryMovieSearch(query).then((data) => {
-      const filteredResults = data.results.filter((result) => {
-        return result.backdrop_path !== null;
+    setIsLoading(true);
+    api
+      .queryMovieSearch(query)
+      .then((data) => {
+        const filteredResults = data.results.filter((result) => {
+          return result.backdrop_path !== null;
+        });
+        setTrailerInfo(filteredResults);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-      setTrailerInfo(filteredResults);
-    });
   }, [query]);
 
   return (
@@ -25,10 +36,35 @@ function Search() {
       <Nav />
       <section className="search">
         <SearchPopup querySearched={query} />
-        <ul className="search__posters">
-          {trailerInfo &&
-            trailerInfo?.map((movie) => <Card key={movie.id} movie={movie} />)}
-        </ul>
+        {isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              width: "100vw",
+              backgroundColor: "#000",
+            }}
+          >
+            <ColorRing
+              visible={true}
+              height="100"
+              width="100"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={["#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff"]}
+            />
+          </div>
+        ) : (
+          <ul className="search__posters">
+            {trailerInfo &&
+              trailerInfo?.map((movie) => (
+                <Card key={movie.id} movie={movie} />
+              ))}
+          </ul>
+        )}
       </section>
       <Footer />
     </div>

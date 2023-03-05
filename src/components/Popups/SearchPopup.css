@@ -24,9 +24,12 @@
 .search-popup__link {
   padding: 10px;
   border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  cursor: pointer;
 }
 .search-popup__button {
   background-color: transparent;
   filter: invert(1);
+  cursor: pointer;
   border: none;
 }
