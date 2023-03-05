@@ -7,14 +7,32 @@ const base_url = "https://image.tmdb.org/t/p";
 const votes = "https://cdn-icons-png.flaticon.com/128/126/126473.png";
 
 function BannerMoreInfo({ movie }) {
+  const [loadingWords, setLoadingWords] = useState("Searching for Trailer...");
+  const [timeoutId, setTimeoutId] = useState(null);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [movieInfo, setMovieInfo] = useState([]);
 
   useEffect(() => {
+    console.log(movie);
     setMovieInfo(movie);
     getTrailer(movie);
     // eslint-disable-next-line
   }, [movie]);
+
+  useEffect(() => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    if (!trailerUrl) {
+      setLoadingWords("Searching for Trailer...");
+      setTimeoutId(
+        setTimeout(() => {
+          setLoadingWords("Trailer cannot be found");
+        }, 15000)
+      );
+    }
+    // eslint-disable-next-line
+  }, [trailerUrl]);
 
   function convertTimeString(totalMinutes) {
     if (totalMinutes == null) {
@@ -45,7 +63,14 @@ function BannerMoreInfo({ movie }) {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.title || movie?.name || movie?.original_name)
+      movieTrailer(
+        movie?.imdb_id
+          ? (null, { tmdbId: movie?.imdb_id })
+          : movie?.title || movie?.name || movie?.original_name,
+        {
+          year: movie?.release_date?.slice(0, 4),
+        }
+      )
         .then((url) => {
           console.log("url", url);
           if (url) {
@@ -60,7 +85,7 @@ function BannerMoreInfo({ movie }) {
   }
 
   return (
-    <div>
+    <div className="more-info">
       <header
         className="more-info-banner"
         style={{
@@ -148,7 +173,7 @@ function BannerMoreInfo({ movie }) {
             />
           )}
           <p className="popup__card-image-preview-name">
-            {!trailerUrl && "Trailer cannot be found"}
+            {!trailerUrl && loadingWords}
           </p>
         </div>
         <div className="more-info__details">
@@ -157,7 +182,7 @@ function BannerMoreInfo({ movie }) {
             <div>
               {movieInfo?.genres &&
                 movieInfo?.genres.map((genre, i) => (
-                  <span key={genre.id} className="more-info__text">
+                  <span key={i} className="more-info__text">
                     {genre.name}
                     {i < movieInfo?.genres.length - 1 && ", "}
                   </span>
@@ -182,7 +207,7 @@ function BannerMoreInfo({ movie }) {
             <div>
               {movieInfo?.spoken_languages &&
                 movieInfo?.spoken_languages.map((prod, i) => (
-                  <span key={prod.id} className="more-info__text">
+                  <span key={i} className="more-info__text">
                     {prod.name}
                     {i < movieInfo?.spoken_languages.length - 1 && ", "}
                   </span>
@@ -194,7 +219,7 @@ function BannerMoreInfo({ movie }) {
             <div>
               {movieInfo?.production_companies &&
                 movieInfo?.production_companies.map((prod, i) => (
-                  <span key={prod.id} className="more-info__text">
+                  <span key={i} className="more-info__text">
                     {prod.name}
                     {i < movieInfo?.production_companies.length - 1 && ", "}
                   </span>

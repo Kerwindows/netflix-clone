@@ -32,7 +32,9 @@ function App() {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.name || movie?.title || movie?.original_name)
+      movieTrailer(movie?.title || movie?.name || movie?.original_name, {
+        year: movie?.release_date?.slice(0, 4),
+      })
         .then((url) => {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
