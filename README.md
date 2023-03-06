@@ -35,7 +35,7 @@ trailers.
 
 **Link to Project**
 
-- [View live site](https://trailer-watch.students.nomoredomainssbs.ru/)
+- [View live site](https://watch-trailers.kerwindows.com/)
 
 **Documentation**
 This project uses the TMDB api. If you would like to use this project as your own, please signup for your own account and replace the API with your own. Thank you.

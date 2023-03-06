@@ -171,9 +171,13 @@
   margin-bottom: 0;
 }
 .popup__form-card iframe {
-  width: 100%;
+  width: 700px;
 }
-
+@media screen and (max-width: 980px) {
+  .popup__form-card iframe {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 540px) {
   .popup__form-card {
     padding: 25px 22px 25px 22px;

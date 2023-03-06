@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Discover from "./Views/Discover";
-import PageNotFound from "./Views/PageNotFound";
-import GetStarted from "./Views/GetStarted";
+import Discover from "./Main/Discover";
+import PageNotFound from "./Main/PageNotFound";
+import GetStarted from "./Main/GetStarted";
 import TrailerMoreInfo from "./Trailers/TrailerMoreInfo";
 import movieTrailer from "movie-trailer";
-import About from "./Views/About";
-import Search from "./Views/Search";
+import About from "./Main/About";
+import Search from "./Main/Search";
 
 function App() {
   const [trailerUrl, setTrailerUrl] = useState("");
