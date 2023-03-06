@@ -26,12 +26,15 @@ class Api {
     }).then((res) => this._handleResponse(res));
   }
   fetchTopRatedMovies() {
-    return fetch(`${this._baseUrl}/movie/top_rated?language=en-US`, {
-      headers: {
-        Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json;charset=utf-8",
-      },
-    }).then((res) => this._handleResponse(res));
+    return fetch(
+      `${this._baseUrl}/movie/top_rated?language=en-US&primary_release_date.gte=2022-12-15&primary_release_date.lte=2023-06-22`,
+      {
+        headers: {
+          Authorization: `Bearer ${this._token}`,
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      }
+    ).then((res) => this._handleResponse(res));
   }
   fetchTopRatedTvShows() {
     return fetch(`${this._baseUrl}/tv/top_rated?language=en-US`, {
@@ -72,6 +75,17 @@ class Api {
         "Content-Type": "application/json;charset=utf-8",
       },
     }).then((res) => this._handleResponse(res));
+  }
+  fetchKidsMovies() {
+    return fetch(
+      `${this._baseUrl}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc`,
+      {
+        headers: {
+          Authorization: `Bearer ${this._token}`,
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      }
+    ).then((res) => this._handleResponse(res));
   }
   queryMovieSearch(query) {
     return fetch(

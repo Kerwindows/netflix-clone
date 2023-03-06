@@ -26,6 +26,7 @@ function Discover({
     comedy: [],
     romantic: [],
     documentaries: [],
+    kidsMovies: [],
   });
 
   useEffect(() => {
@@ -43,11 +44,11 @@ function Discover({
           console.log(err);
         });
       api
-        .fetchNewflixOriginal()
+        .fetchTopRatedMovies()
         .then((data) => {
           setMovies((prevMovies) => ({
             ...prevMovies,
-            newflix: data.results.slice(0, 10),
+            newflix: data.results,
           }));
         })
         .catch((err) => {
@@ -107,6 +108,20 @@ function Discover({
         })
         .catch((err) => {
           console.log(err);
+        });
+      api
+        .fetchKidsMovies()
+        .then((data) => {
+          const filteredResults = data.results.filter((result) => {
+            return !result.genre_ids.includes(27);
+          });
+          setMovies((prevMovies) => ({
+            ...prevMovies,
+            kidsMovies: filteredResults,
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
         })
         .finally(() => {
           setIsLoading(false);
@@ -155,10 +170,10 @@ function Discover({
           <Banner movie={trendingVideos} onCardClick={handleCardClick} />
           <div className="main">
             <Trailer
-              title="NEW ORIGINALS"
+              title="New Releases"
               movies={movies.newflix}
               size="big"
-              type="tv"
+              type="movie"
               onCardClick={handleCardClick}
             />
             <Trailer
@@ -185,6 +200,11 @@ function Discover({
             <Trailer
               title="Ducumentaries"
               movies={movies.documentaries}
+              onCardClick={handleCardClick}
+            />
+            <Trailer
+              title="Popular Kids Movies"
+              movies={movies.kidsMovies}
               onCardClick={handleCardClick}
             />
 
