@@ -15,9 +15,7 @@ function GetStarted() {
       <animated.div style={style}>
         <div className="get-started">
           <div className="get-started__info">
-            <h1 className="get-started__title">
-              Unlimited TV & Movie Trailers
-            </h1>
+            <h1 className="get-started__title">Unlimited Movie Trailers</h1>
             <h2 className="get-started__subtitle">
               Watch anywhere. Watch anytime.
             </h2>

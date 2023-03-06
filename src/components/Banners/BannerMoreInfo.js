@@ -13,7 +13,6 @@ function BannerMoreInfo({ movie }) {
   const [movieInfo, setMovieInfo] = useState([]);
 
   useEffect(() => {
-    console.log(movie);
     setMovieInfo(movie);
     getTrailer(movie);
     // eslint-disable-next-line
@@ -75,7 +74,6 @@ function BannerMoreInfo({ movie }) {
         year: movie?.release_date?.slice(0, 4),
       })
         .then((url) => {
-          console.log("url", url);
           if (url) {
             const urlParams = new URLSearchParams(new URL(url).search);
             setTrailerUrl(urlParams.get("v"));
