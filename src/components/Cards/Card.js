@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
-import placeholder from "../../images/placeholder.jpg";
 
 const base_url = "https://image.tmdb.org/t/p/w342";
 const playButton = "https://cdn-icons-png.flaticon.com/128/483/483054.png";
@@ -16,7 +15,7 @@ function Card({ movie, onCardClick, size, type = "movie" }) {
     <li className={`${size ? "card card_bg" : "card"}`}>
       <img
         className="card__image"
-        src={`${base_url}${movie.poster_path}` || placeholder}
+        src={`${base_url}${movie.poster_path}`}
         alt={movie.name}
       />
       <div className={`${size ? "card__info card__info_bg" : "card__info"}`}>
