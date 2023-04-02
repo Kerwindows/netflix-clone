@@ -43,3 +43,5 @@ This project uses the TMDB api. If you would like to use this project as your ow
 - [Sign up for your free TMDB account](https://www.themoviedb.org/)
 
 - [API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
+
+Hosting has to be uodated
